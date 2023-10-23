@@ -1,0 +1,7 @@
+{
+  "name": "appNetshoes",
+  "integrations": {
+    "capacitor": {}
+  },
+  "type": "angular"
+}
