@@ -17,7 +17,7 @@ ion-grid {
   }
   
   ion-col {
-    background-color: #135d54;
+    // background-color: #135d54;
     border: solid 1px #fff;
     color: #fff;
     text-align: center;
@@ -31,4 +31,26 @@ ion-grid {
   h1, p{
     margin: 0;
     padding: 0;
+  }
+  .imagens {
+    font-size: 64px;
+  }
+  .img1{
+    background-color: #444;
+  }
+  .img2{
+    background-color: #fe3737;
+  }
+  .img3{
+    background-color: #05f2a3;
+  }
+  .txts{
+    color:#3e3e3e;
+  }
+  h2{
+    font-weight: 700;
+    margin:0;
+  }
+  p{
+    font-size: 12px;
   }
