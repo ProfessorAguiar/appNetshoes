@@ -1,3 +1,68 @@
 <ion-app>
-  <ion-router-outlet></ion-router-outlet>
+
+  <ion-card *ngIf="!mostrarApp && !c">
+    <ion-card-header>
+      <ion-card-title>Login</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-input label="Usuário" label-placement="floating" fill="outline"
+              placeholder="Entre com seu username" #usuario></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input type="password" label="Senha" label-placement="floating" fill="outline"
+              placeholder="Entre sua senha" #senha></ion-input>
+              <p class="erro">{{mensagem}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" (click)="fazerLogin(usuario.value,senha.value)">Entrar</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <p>Não possui cadastro? <a (click)="mostrarCadastrar()">Cadastrar-se</a></p>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+
+  <ion-card *ngIf="c">
+    <ion-card-header>
+      <ion-card-title>Cadastrar</ion-card-title>
+    </ion-card-header>
+    <ion-card-content>
+
+      <ion-grid>
+        <ion-row>
+          <ion-col>
+            <ion-input label="email" label-placement="floating" fill="outline"
+              placeholder="Entre com seu email" #email></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input type="password" label="Senha" label-placement="floating" fill="outline"
+              placeholder="Entre sua senha" #senhaC></ion-input>
+              <p class="erro">{{mensagem}}</p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" (click)="Cadastrar(email.value,senhaC.value)">Cadastrar</ion-button>
+          </ion-col>
+        </ion-row>
+      </ion-grid>
+
+    </ion-card-content>
+  </ion-card>
+  <ion-router-outlet *ngIf="mostrarApp"></ion-router-outlet>
 </ion-app>

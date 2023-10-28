@@ -1,56 +1,66 @@
 ion-grid {
-    --ion-grid-padding: 10px;
-  
-    --ion-grid-padding-xs: 10px;
-    --ion-grid-padding-sm: 10px;
-    --ion-grid-padding-md: 10px;
-    --ion-grid-padding-lg: 10px;
-    --ion-grid-padding-xl: 10px;
-  
-    --ion-grid-column-padding: 10px;
-  
-    --ion-grid-column-padding-xs: 10px;
-    --ion-grid-column-padding-sm: 10px;
-    --ion-grid-column-padding-md: 10px;
-    --ion-grid-column-padding-lg: 10px;
-    --ion-grid-column-padding-xl: 10px;
-  }
-  
-  ion-col {
-    // background-color: #135d54;
-    border: solid 1px #fff;
-    color: #fff;
-    text-align: center;
-    align-items: center;
-    justify-content: center;
-  }
-  ion-img{
-    margin: auto;
-    width: 250px;
-  }
-  h1, p{
-    margin: 0;
-    padding: 0;
-  }
-  .imagens {
-    font-size: 64px;
-  }
-  .img1{
-    background-color: #444;
-  }
-  .img2{
-    background-color: #fe3737;
-  }
-  .img3{
-    background-color: #05f2a3;
-  }
-  .txts{
-    color:#3e3e3e;
-  }
-  h2{
-    font-weight: 700;
-    margin:0;
-  }
-  p{
-    font-size: 12px;
-  }
+  --ion-grid-padding: 10px;
+
+  --ion-grid-padding-xs: 10px;
+  --ion-grid-padding-sm: 10px;
+  --ion-grid-padding-md: 10px;
+  --ion-grid-padding-lg: 10px;
+  --ion-grid-padding-xl: 10px;
+
+  --ion-grid-column-padding: 10px;
+
+  --ion-grid-column-padding-xs: 10px;
+  --ion-grid-column-padding-sm: 10px;
+  --ion-grid-column-padding-md: 10px;
+  --ion-grid-column-padding-lg: 10px;
+  --ion-grid-column-padding-xl: 10px;
+}
+
+ion-col {
+  // background-color: #135d54;
+  border: solid 1px #fff;
+  color: #fff;
+  text-align: center;
+  align-items: center;
+  justify-content: center;
+}
+
+ion-img {
+  margin: auto;
+  width: 250px;
+}
+
+h1,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+.imagens {
+  font-size: 64px;
+}
+
+.img1 {
+  background-color: #444;
+}
+
+.img2 {
+  background-color: #fe3737;
+}
+
+.img3 {
+  background-color: #05f2a3;
+}
+
+.txts {
+  color: #3e3e3e;
+}
+
+h2 {
+  font-weight: 700;
+  margin: 0;
+}
+
+p {
+  font-size: 12px;
+}
