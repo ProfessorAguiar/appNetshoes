@@ -1,4 +1,12 @@
 import { Component } from '@angular/core';
+import { FirebaseApp } from "@angular/fire/app";
+
+import {
+  Auth,
+  signInWithEmailAndPassword,
+  createUserWithEmailAndPassword,
+  signOut
+} from '@angular/fire/auth';
 
 @Component({
   selector: 'app-root',
@@ -6,32 +14,49 @@ import { Component } from '@angular/core';
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
-  mostrarApp=false
-  c=false
-  mensagem=''
-  login={user:'admin',pass:123456}
-  fazerLogin(usuario:any, senha:any){
-    this.mensagem=''
-    console.log(`fazendo login do usuário: ${usuario} com senha: ${senha}`)
-    if(usuario==this.login.user && senha==this.login.pass){
-      this.mostrarApp=true
-    }else{
-      this.mensagem='Usuário não cadastrado ou senha inválida!'
+  mostrarApp = false
+  c = false
+  mensagem = ''
+  login = { user: 'admin', pass: 123456 }
+
+  async fazerLogin(email: any, senha: any) {
+    this.mensagem = ''
+
+    try {
+      const user = await signInWithEmailAndPassword(this.auth, email, senha);
+      this.mostrarApp = true
+      return user;
+    } catch (e) {
+      this.mensagem = 'Usuário não cadastrado ou senha inválida!'
+      return null;
+    }
+  }
+  logout() {
+    this.mostrarApp = false
+		return signOut(this.auth);
+	}
+  async Cadastrar(email: any, senha: any) {
+    this.mensagem = ''
+    if (email != '' && senha != '') {
+      try {
+        const user = await createUserWithEmailAndPassword(this.auth, email, senha);
+        this.c = false
+        return user;
+      } catch (e) {
+        return null;
+      }
+    } else {
+      this.mensagem = 'Digite em nome de Usuário e uma senha!'
+      return
     }
   }
 
-  Cadastrar(usuario:any, senha:any){
-    this.mensagem=''
-    console.log(`fazendo login do usuário: ${usuario} com senha: ${senha}`)
-    if(usuario!='' && senha!=''){
-      this.c=false
-    }else{
-      this.mensagem='Digite em nome de Usuário e uma senha!'
-    }
+
+
+  mostrarCadastrar() {
+    this.mensagem = ''
+    this.c = true
   }
-  mostrarCadastrar(){
-    this.mensagem=''
-    this.c=true
-  }
-  constructor() {}
+
+  constructor(private auth: Auth) { }
 }
