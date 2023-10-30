@@ -49,6 +49,11 @@
             <p>Não possui cadastro? <a (click)="mostrarCadastrar()">Cadastrar-se</a></p>
           </ion-col>
         </ion-row>
+        <!-- <ion-row *ngFor="let i of imgUrl">
+          <ion-col>
+            <img src={{i}} width="80"/>
+          </ion-col>
+        </ion-row> -->
       </ion-grid>
 
     </ion-card-content>
@@ -76,6 +81,12 @@
         </ion-row>
         <ion-row>
           <ion-col>
+            <ion-input type="file" label="foto" label-placement="floating" fill="outline"
+              #foto (change)="GuardarFoto($event)"></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <ion-button expand="block" (click)="Cadastrar(email.value,senhaC.value)">Cadastrar</ion-button>
           </ion-col>
         </ion-row>
@@ -83,5 +94,5 @@
 
     </ion-card-content>
   </ion-card>
-  <ion-router-outlet *ngIf="mostrarApp"></ion-router-outlet>
+  <ion-router-outlet *ngIf="mostrarApp" ></ion-router-outlet>
 </ion-app>
