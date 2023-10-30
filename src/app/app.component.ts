@@ -20,10 +20,7 @@ export class AppComponent {
   c = false
   mensagem = ''
   imgUrl: any = []
-  cadUser = {
-    email: '',
-    senha: ''
-  }
+ 
   imageRef: any
 
   async fazerLogin(email: any, senha: any) {
@@ -42,6 +39,11 @@ export class AppComponent {
     this.mostrarApp = false
     return signOut(this.auth);
   }
+
+  cadUser = {
+    email: '',
+    senha: ''
+  }
   async Cadastrar(email: any, senha: any) {
     this.mensagem = ''
     if (email != '' && senha != '') {
@@ -49,8 +51,8 @@ export class AppComponent {
       this.cadUser.senha = senha
       try {
         const user = await createUserWithEmailAndPassword(this.auth, email, senha);
-        this.imageRef = ref(this.af, `fotos/${this.cadUser.email}`)
-        uploadBytes(this.imageRef, this.foto)
+        // this.imageRef = ref(this.af, `fotos/${this.cadUser.email}`)
+        // uploadBytes(this.imageRef, this.foto)
         this.c = false
         return user;
       } catch (e) {
