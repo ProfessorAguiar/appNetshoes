@@ -49,6 +49,11 @@
             <p>Não possui cadastro? <a (click)="mostrarCadastrar()">Cadastrar-se</a></p>
           </ion-col>
         </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-button expand="block" (click)="ListarUsers()">Cadastrar</ion-button>
+          </ion-col>
+        </ion-row>
         <!-- <ion-row *ngFor="let i of imgUrl">
           <ion-col>
             <img src={{i}} width="80"/>
@@ -68,8 +73,32 @@
       <ion-grid>
         <ion-row>
           <ion-col>
+            <ion-input type="text" label="Nome Completo" label-placement="floating" fill="outline"
+              placeholder="Entre com seu nome Completo" #nome></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <ion-input type="email" label="email" label-placement="floating" fill="outline"
               placeholder="Entre com seu email" #email></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input type="text" label="Celular" label-placement="floating" fill="outline"
+              placeholder="Entre com seu Celular" #celular></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input type="text" label="CPF" label-placement="floating" fill="outline"
+              placeholder="Entre com seu CPF" #CPF></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <ion-input type="text" label="Profissão" label-placement="floating" fill="outline"
+              placeholder="Entre com sua Profissão" #prof></ion-input>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -81,18 +110,29 @@
         </ion-row>
         <ion-row>
           <ion-col>
+            <ion-input type="password" label="Repita Senha" label-placement="floating" fill="outline"
+              placeholder="Repita sua senha" #senhaCR></ion-input>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <ion-input type="file" label="foto" label-placement="floating" fill="outline"
               #foto (change)="GuardarFoto($event)"></ion-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button expand="block" (click)="Cadastrar(email.value,senhaC.value)">Cadastrar</ion-button>
+            <ion-button expand="block" (click)="Cadastrar(nome.value,email.value,celular.value,CPF.value,prof.value,senhaC.value,senhaCR.value)">Cadastrar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
 
     </ion-card-content>
   </ion-card>
+  <!-- <ion-list>
+    <ion-item *ngFor="let contact of contacts | async" [routerLink]="'/contact-details/' + contact.id">
+      <ion-label>{{ contact.firstName }} {{ contact.lastName }}</ion-label>
+    </ion-item>
+   </ion-list> -->
   <ion-router-outlet *ngIf="mostrarApp" ></ion-router-outlet>
 </ion-app>

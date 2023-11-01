@@ -2,13 +2,14 @@ import { Component, OnInit } from '@angular/core';
 import { FirebaseApp, firebaseApp$ } from "@angular/fire/app";
 import { Storage, ref, uploadBytes, listAll, getDownloadURL } from '@angular/fire/storage';
 import { v4 } from 'uuid';
+import { doc, collection, setDoc, Firestore, collectionData, getDocs } from '@angular/fire/firestore';
+import { Observable } from 'rxjs';
 import {
   Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
   signOut
 } from '@angular/fire/auth';
-
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -42,15 +43,26 @@ export class AppComponent {
     this.mostrarApp = false
     return signOut(this.auth);
   }
-  async Cadastrar(email: any, senha: any) {
+  async Cadastrar(nome: any, email: any, celular: any, CPF: any, prof: any, senha: any, RPSenha: any) {
     this.mensagem = ''
-    if (email != '' && senha != '') {
+    if (senha === RPSenha && senha != '') {
       this.cadUser.email = email
       this.cadUser.senha = senha
       try {
         const user = await createUserWithEmailAndPassword(this.auth, email, senha);
         this.imageRef = ref(this.af, `fotos/${this.cadUser.email}`)
         uploadBytes(this.imageRef, this.foto)
+        const User = {
+          nome: nome,
+          email: email,
+          celular: celular,
+          CPF: CPF,
+          profissao: prof,
+          senha: senha,
+          foto: 'this.imageRef'
+        }
+        const document = doc(collection(this.firestore, 'Usuarios'));
+        return setDoc(document, User);
         this.c = false
         return user;
       } catch (e) {
@@ -70,7 +82,12 @@ export class AppComponent {
       // uploadBytes(this.imageRef, this.foto)
     }
   }
-
+  async ListarUsers() {
+    const querySnapshot = await getDocs(collection(this.firestore, "Usuarios"));
+    querySnapshot.forEach((doc) => {
+      console.log(`${doc.id} => ${doc.data()['nome']}`);
+    });
+  }
 
   mostrarCadastrar() {
     this.mensagem = ''
@@ -78,7 +95,7 @@ export class AppComponent {
   }
   //npm i --save-dev @types/uuid
   ele: any
-  constructor(private auth: Auth, private af: Storage) { }
+  constructor(private auth: Auth, private af: Storage, private firestore: Firestore) { }
   ngOnInit() {
     listAll(ref(this.af, 'fotos')).then(imgs => {
       imgs.items.forEach((im) => {
