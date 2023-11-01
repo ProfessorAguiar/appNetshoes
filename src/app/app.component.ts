@@ -62,9 +62,8 @@ export class AppComponent {
           foto: 'this.imageRef'
         }
         const document = doc(collection(this.firestore, 'Usuarios'));
-        return setDoc(document, User);
         this.c = false
-        return user;
+        return setDoc(document, User);
       } catch (e) {
         return null;
       }
