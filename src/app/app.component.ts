@@ -8,6 +8,7 @@ import {
   createUserWithEmailAndPassword,
   signOut
 } from '@angular/fire/auth';
+import { MaskitoOptions, MaskitoElementPredicateAsync } from '@maskito/core';
 
 @Component({
   selector: 'app-root',
@@ -15,6 +16,17 @@ import {
   styleUrls: ['app.component.scss'],
 })
 export class AppComponent {
+
+  readonly phoneMask: MaskitoOptions = {
+    mask: ['(', /\d/, /\d/, ')', ' ', /\d/, /\d/, /\d/, /\d/, /\d/, '-', /\d/, /\d/, /\d/, /\d/],
+  };
+
+  readonly CPFMask: MaskitoOptions = {
+    mask: [ /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/,'.', /\d/, /\d/, /\d/,'-', /\d/, /\d/],
+  };
+
+  readonly maskPredicate: MaskitoElementPredicateAsync = async (el) => (el as HTMLIonInputElement).getInputElement();
+
   foto: any
   mostrarApp = false
   c = false
@@ -44,7 +56,7 @@ export class AppComponent {
     email: '',
     senha: ''
   }
-  async Cadastrar(email: any, senha: any) {
+  async Cadastrar(nome:any, email: any, cpf:any, celular:any, profissao:any, senha: any, rpSenha:any) {
     this.mensagem = ''
     if (email != '' && senha != '') {
       this.cadUser.email = email
@@ -81,23 +93,35 @@ export class AppComponent {
   //npm i --save-dev @types/uuid
   ele: any
   constructor(private auth: Auth, private af: Storage) { }
-  ngOnInit() {
-    listAll(ref(this.af, 'fotos')).then(imgs => {
-      imgs.items.forEach((im) => {
-        console.log(im.fullPath)
-        console.log(im.bucket)
-        getDownloadURL(im).then((res) => {
-          console.log(res)
-          this.imgUrl.push(res)
-        })
+  // ngOnInit() {
+  //   listAll(ref(this.af, 'fotos')).then(imgs => {
+  //     imgs.items.forEach((im) => {
+  //       console.log(im.fullPath)
+  //       console.log(im.bucket)
+  //       getDownloadURL(im).then((res) => {
+  //         console.log(res)
+  //         this.imgUrl.push(res)
+  //       })
 
-      })
-      console.log(imgs.items)
-      // imgs.items.forEach(val=>{
-      //   getDownloadURL(val).then(url=>{
-      //     this.imgUrl(data=>[...],url)
-      //   })
-      // })
-    })
+  //     })
+  //     console.log(imgs.items)
+  //     // imgs.items.forEach(val=>{
+  //     //   getDownloadURL(val).then(url=>{
+  //     //     this.imgUrl(data=>[...],url)
+  //     //   })
+  //     // })
+  //   })
+  // }
+
+  toggleChange(ev:any) {
+    this.toggleDarkTheme(ev.detail.checked);
   }
+
+  // Add or remove the "dark" class on the document body
+  toggleDarkTheme(shouldAdd:any) {
+    document.body.classList.toggle('dark', shouldAdd);
+  }
+
+
+
 }

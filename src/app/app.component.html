@@ -10,7 +10,7 @@
         <ion-icon name="camera"></ion-icon>
       </ion-fab-button>
       <ion-fab-button>
-        <ion-icon name="color-palette"></ion-icon>
+        <ion-icon name="color-palette" (click)="toggleChange($event)"></ion-icon>
       </ion-fab-button>
       <ion-fab-button>
         <ion-icon name="exit" (click)="logout()"></ion-icon>
@@ -28,15 +28,15 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-input label="email" label-placement="floating" fill="outline"
-              placeholder="Entre com seu username" #usuario></ion-input>
+            <ion-input label="email" label-placement="floating" fill="outline" placeholder="Entre com seu username"
+              #usuario></ion-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-input type="password" label="Senha" label-placement="floating" fill="outline"
               placeholder="Entre sua senha" #senha></ion-input>
-              <p class="erro">{{mensagem}}</p>
+            <p class="erro">{{mensagem}}</p>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -65,34 +65,30 @@
     </ion-card-header>
     <ion-card-content>
 
-      <ion-grid>
-        <ion-row>
-          <ion-col>
-            <ion-input type="email" label="email" label-placement="floating" fill="outline"
-              placeholder="Entre com seu email" #email></ion-input>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-input type="password" label="Senha" label-placement="floating" fill="outline"
-              placeholder="Entre sua senha" #senhaC></ion-input>
-              <p class="erro">{{mensagem}}</p>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-input type="file" label="foto" label-placement="floating" fill="outline"
-              #foto (change)="GuardarFoto($event)"></ion-input>
-          </ion-col>
-        </ion-row>
-        <ion-row>
-          <ion-col>
-            <ion-button expand="block" (click)="Cadastrar(email.value,senhaC.value)">Cadastrar</ion-button>
-          </ion-col>
-        </ion-row>
-      </ion-grid>
+      <ion-input type="text" label="nome" label-placement="floating" fill="outline" placeholder="Entre com seu nome"
+        #nome required="true"></ion-input>
 
+      <ion-input type="email" label="email" label-placement="floating" fill="outline" placeholder="Entre com seu email"
+        #email></ion-input>
+
+      <ion-input type="text" label="CPF" label-placement="floating" fill="outline" placeholder="Entre com seu CPF"
+        #CPF placeholder="xxx.xxx.xxx-xx" [maskito]="CPFMask" [maskitoElement]="maskPredicate"></ion-input>
+
+      <ion-input type="text" label="celular" label-placement="floating" fill="outline" #celular
+        placeholder="(xx) xxxxx-xxxx" [maskito]="phoneMask" [maskitoElement]="maskPredicate"></ion-input>
+
+      <ion-input type="text" label="profissão" label-placement="floating" fill="outline"
+        placeholder="Entre com sua profissão" #profissao></ion-input>
+      <ion-input type="password" label="Senha" label-placement="floating" fill="outline" placeholder="Entre sua senha"
+        #senhaC></ion-input>
+      <ion-input type="password" label="Confirme a Senha" label-placement="floating" fill="outline"
+        placeholder="Confirme sua senha" #senhaConf></ion-input>
+      <p class="erro">{{mensagem}}</p>
+      <ion-input type="file" label="foto" label-placement="floating" fill="outline" #foto
+        (change)="GuardarFoto($event)"></ion-input>
+      <ion-button expand="block"
+        (click)="Cadastrar(nome.value,email.value,CPF.value,celular.value,profissao.value,senhaC.value,senhaConf.value)">Cadastrar</ion-button>
     </ion-card-content>
   </ion-card>
-  <ion-router-outlet *ngIf="mostrarApp" ></ion-router-outlet>
+  <ion-router-outlet *ngIf="mostrarApp"></ion-router-outlet>
 </ion-app>
