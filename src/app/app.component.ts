@@ -8,8 +8,11 @@ import {
   Auth,
   signInWithEmailAndPassword,
   createUserWithEmailAndPassword,
-  signOut
+  signOut,
+  GoogleAuthProvider,
+  signInWithPopup
 } from '@angular/fire/auth';
+import { AuthService } from './services/auth.service';
 @Component({
   selector: 'app-root',
   templateUrl: 'app.component.html',
@@ -113,5 +116,27 @@ export class AppComponent {
       //   })
       // })
     })
+  }
+  googleLogin() {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(this.auth, provider).then((res: any) => {
+      console.log(res)
+      const credential = GoogleAuthProvider.credentialFromResult(res);
+      console.log(credential)
+      // const token = credential.accessToken;
+      // The signed-in user info.
+      const user = res.user.displayName;
+      console.log(user)
+    }).catch((error) => {
+      // Handle Errors here.
+      const errorCode = error.code;
+      const errorMessage = error.message;
+      // The email of the user's account used.
+      const email = error.customData.email;
+      // The AuthCredential type that was used.
+      const credential = GoogleAuthProvider.credentialFromError(error);
+      // ...
+    });
+    console.log('login com google')
   }
 }

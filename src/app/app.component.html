@@ -28,25 +28,39 @@
       <ion-grid>
         <ion-row>
           <ion-col>
-            <ion-input label="email" label-placement="floating" fill="outline"
-              placeholder="Entre com seu username" #usuario></ion-input>
+            <ion-input label="email" label-placement="floating" fill="outline" placeholder="Entre com seu username"
+              #usuario></ion-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <ion-input type="password" label="Senha" label-placement="floating" fill="outline"
               placeholder="Entre sua senha" #senha></ion-input>
-              <p class="erro">{{mensagem}}</p>
+            <p class="erro">{{mensagem}}</p>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button expand="block" (click)="fazerLogin(usuario.value,senha.value)">Entrar</ion-button>
+            <ion-button expand="block" (click)="fazerLogin(usuario.value,senha.value)">Entrar
+            </ion-button>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
             <p>Não possui cadastro? <a (click)="mostrarCadastrar()">Cadastrar-se</a></p>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col class="glog">
+            --------------------- ou -----------------------
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
+            <a class="glog" (click)="googleLogin()">
+              <ion-img src="../assets/google-icon.svg"
+                alt="Login com google"></ion-img>
+              Login com Google</a>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -91,8 +105,8 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-input type="text" label="CPF" label-placement="floating" fill="outline"
-              placeholder="Entre com seu CPF" #CPF></ion-input>
+            <ion-input type="text" label="CPF" label-placement="floating" fill="outline" placeholder="Entre com seu CPF"
+              #CPF></ion-input>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -105,7 +119,7 @@
           <ion-col>
             <ion-input type="password" label="Senha" label-placement="floating" fill="outline"
               placeholder="Entre sua senha" #senhaC></ion-input>
-              <p class="erro">{{mensagem}}</p>
+            <p class="erro">{{mensagem}}</p>
           </ion-col>
         </ion-row>
         <ion-row>
@@ -116,13 +130,14 @@
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-input type="file" label="foto" label-placement="floating" fill="outline"
-              #foto (change)="GuardarFoto($event)"></ion-input>
+            <ion-input type="file" label="foto" label-placement="floating" fill="outline" #foto
+              (change)="GuardarFoto($event)"></ion-input>
           </ion-col>
         </ion-row>
         <ion-row>
           <ion-col>
-            <ion-button expand="block" (click)="Cadastrar(nome.value,email.value,celular.value,CPF.value,prof.value,senhaC.value,senhaCR.value)">Cadastrar</ion-button>
+            <ion-button expand="block"
+              (click)="Cadastrar(nome.value,email.value,celular.value,CPF.value,prof.value,senhaC.value,senhaCR.value)">Cadastrar</ion-button>
           </ion-col>
         </ion-row>
       </ion-grid>
@@ -134,5 +149,5 @@
       <ion-label>{{ contact.firstName }} {{ contact.lastName }}</ion-label>
     </ion-item>
    </ion-list> -->
-  <ion-router-outlet *ngIf="mostrarApp" ></ion-router-outlet>
+  <ion-router-outlet *ngIf="mostrarApp"></ion-router-outlet>
 </ion-app>
