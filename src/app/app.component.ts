@@ -44,6 +44,10 @@ export class AppComponent {
   }
   logout() {
     this.mostrarApp = false
+    this.userName=''
+    this.userPhoto=''
+    sessionStorage.clear();
+    this.photo=false
     return signOut(this.auth);
   }
   async Cadastrar(nome: any, email: any, celular: any, CPF: any, prof: any, senha: any, RPSenha: any) {
@@ -117,6 +121,9 @@ export class AppComponent {
       // })
     })
   }
+  public userPhoto:string=''
+  public userName:string=''
+  public photo:boolean=false
   googleLogin() {
     const provider = new GoogleAuthProvider()
     signInWithPopup(this.auth, provider).then((res: any) => {
@@ -125,8 +132,14 @@ export class AppComponent {
       console.log(credential)
       // const token = credential.accessToken;
       // The signed-in user info.
-      const user = res.user.displayName;
-      console.log(user)
+      this.userPhoto=res.user.photoURL;
+      this.userName = res.user.displayName;
+      this.photo=true
+      console.log(this.userName)
+      console.log(res.user)
+      sessionStorage.setItem('Usuario', this.userName);
+      sessionStorage.setItem('fotoPerfil', this.userPhoto);
+      this.mostrarApp = true
     }).catch((error) => {
       // Handle Errors here.
       const errorCode = error.code;

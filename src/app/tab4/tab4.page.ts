@@ -20,7 +20,14 @@ export class Tab4Page implements OnInit {
     senha: ''
   }
   constructor(private auth: Auth, private af: Storage) { }
-
+  public userName:any=''
+  public userPhoto:any=''
+  carregarPerfil(){
+    this.userName=sessionStorage.getItem('Usuario');
+    this.userPhoto=sessionStorage.getItem('fotoPerfil');
+    console.log(this.userName)
+  }
+  
   ngOnInit() {
     listAll(ref(this.af, 'fotos')).then(imgs => {
       imgs.items.forEach((im) => {
