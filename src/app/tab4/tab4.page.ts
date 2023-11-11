@@ -27,7 +27,10 @@ export class Tab4Page implements OnInit {
     this.userPhoto=sessionStorage.getItem('fotoPerfil');
     console.log(this.userName)
   }
-  
+  ngAfterViewInit(){
+    this.userName=sessionStorage.getItem('Usuario');
+    this.userPhoto=sessionStorage.getItem('fotoPerfil');
+  }
   ngOnInit() {
     listAll(ref(this.af, 'fotos')).then(imgs => {
       imgs.items.forEach((im) => {

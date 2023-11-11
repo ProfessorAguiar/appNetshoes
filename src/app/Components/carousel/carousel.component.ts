@@ -1,12 +1,11 @@
-import { Component } from '@angular/core';
+import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
 
 @Component({
-  selector: 'app-tab1',
-  templateUrl: 'tab1.page.html',
-  styleUrls: ['tab1.page.scss'],
+  selector: 'app-carousel',
+  templateUrl: './carousel.component.html',
+  styleUrls: ['./carousel.component.scss'],
 })
-export class Tab1Page {
- 
+export class CarouselComponent  implements OnInit {
   public calcados = [
     {
       id: 1,
@@ -49,8 +48,7 @@ export class Tab1Page {
       imagem: "https://static.netshoes.com.br/produtos/camisa-flamengo-i-2223-sn-torcedor-adidas-masculina/68/3ZP-5382-068/3ZP-5382-068_zoom1.jpg"
     },
   ]
+  constructor() { }
 
-  constructor() {
-  }
-  
+  ngOnInit() {}
 }

@@ -1,4 +1,4 @@
-import { NgModule } from '@angular/core';
+import { NgModule, CUSTOM_ELEMENTS_SCHEMA } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 import { RouteReuseStrategy } from '@angular/router';
 
@@ -12,7 +12,11 @@ import { getFirestore, provideFirestore } from '@angular/fire/firestore';
 
 import { provideAuth, getAuth, GoogleAuthProvider, signInWithPopup } from '@angular/fire/auth';
 import { provideStorage, getStorage } from '@angular/fire/storage';
-
+import { CarouselComponent } from './Components/carousel/carousel.component';
+// import function to register Swiper custom elements
+import { register } from 'swiper/element/bundle';
+// register Swiper custom elements
+register();
 const firebaseConfig = {
   apiKey: "AIzaSyCNWEjx5OyfoercifthlvjQkJXDnF-z9ok",
   authDomain: "netshoes-43932.firebaseapp.com",
@@ -33,6 +37,7 @@ const firebaseConfig = {
   ],
   providers: [{ provide: RouteReuseStrategy, useClass: IonicRouteStrategy }],
   bootstrap: [AppComponent],
+  schemas: [CUSTOM_ELEMENTS_SCHEMA]
 })
 export class AppModule {}
 
