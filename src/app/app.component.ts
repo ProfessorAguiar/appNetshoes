@@ -105,15 +105,15 @@ export class AppComponent {
   ngOnInit() {
     listAll(ref(this.af, 'fotos')).then(imgs => {
       imgs.items.forEach((im) => {
-        console.log(im.fullPath)
-        console.log(im.bucket)
+        //console.log(im.fullPath)
+        //console.log(im.bucket)
         getDownloadURL(im).then((res) => {
           console.log(res)
           this.imgUrl.push(res)
         })
 
       })
-      console.log(imgs.items)
+      //console.log(imgs.items)
       // imgs.items.forEach(val=>{
       //   getDownloadURL(val).then(url=>{
       //     this.imgUrl(data=>[...],url)

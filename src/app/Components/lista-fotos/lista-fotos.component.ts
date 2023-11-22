@@ -1,13 +1,12 @@
-import { Component, OnInit, ViewChild, AfterViewInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { Storage, listAll, getDownloadURL, ref } from '@angular/fire/storage';
 
 @Component({
-  selector: 'app-carousel',
-  templateUrl: './carousel.component.html',
-  styleUrls: ['./carousel.component.scss'],
+  selector: 'app-lista-fotos',
+  templateUrl: './lista-fotos.component.html',
+  styleUrls: ['./lista-fotos.component.scss'],
 })
-export class CarouselComponent  implements OnInit {
-  
+export class ListaFotosComponent implements OnInit {
   imgUrl: any = []
   constructor(private af: Storage) { }
 
