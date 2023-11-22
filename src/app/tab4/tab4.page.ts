@@ -12,7 +12,7 @@ import {
   templateUrl: './tab4.page.html',
   styleUrls: ['./tab4.page.scss'],
 })
-export class Tab4Page implements OnInit {
+export class Tab4Page{
   @Input() email:string=''
   imgUrl: any = []
   cadUser = {
@@ -21,7 +21,7 @@ export class Tab4Page implements OnInit {
   }
   constructor(private auth: Auth, private af: Storage) { }
 
-  ngOnInit() {
+  async listUsers() {
     listAll(ref(this.af, 'fotos')).then(imgs => {
       imgs.items.forEach((im) => {
         console.log(im.fullPath)

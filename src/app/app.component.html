@@ -46,6 +46,11 @@
         </ion-row>
         <ion-row>
           <ion-col>
+            <ion-button expand="block" (click)="LoginComGoogle()">Entrar com google</ion-button>
+          </ion-col>
+        </ion-row>
+        <ion-row>
+          <ion-col>
             <p>Não possui cadastro? <a (click)="mostrarCadastrar()">Cadastrar-se</a></p>
           </ion-col>
         </ion-row>
@@ -59,36 +64,38 @@
     </ion-card-content>
   </ion-card>
 
-  <ion-card *ngIf="c">
-    <ion-card-header>
-      <ion-card-title>Cadastrar</ion-card-title>
-    </ion-card-header>
-    <ion-card-content>
+  <ion-content>
+    <ion-card *ngIf="c">
+      <ion-card-header>
+        <ion-card-title>Cadastrar</ion-card-title>
+      </ion-card-header>
+      <ion-card-content>
 
-      <ion-input type="text" label="nome" label-placement="floating" fill="outline" placeholder="Entre com seu nome"
-        #nome required="true"></ion-input>
+        <ion-input type="text" label="nome" label-placement="floating" fill="outline" placeholder="Entre com seu nome"
+          #nome required="true"></ion-input>
 
-      <ion-input type="email" label="email" label-placement="floating" fill="outline" placeholder="Entre com seu email"
-        #email></ion-input>
+        <ion-input type="email" label="email" label-placement="floating" fill="outline"
+          placeholder="Entre com seu email" #email></ion-input>
 
-      <ion-input type="text" label="CPF" label-placement="floating" fill="outline" placeholder="Entre com seu CPF"
-        #CPF placeholder="xxx.xxx.xxx-xx" [maskito]="CPFMask" [maskitoElement]="maskPredicate"></ion-input>
+        <ion-input type="text" label="CPF" label-placement="floating" fill="outline" placeholder="Entre com seu CPF"
+          #CPF placeholder="xxx.xxx.xxx-xx" [maskito]="CPFMask" [maskitoElement]="maskPredicate"></ion-input>
 
-      <ion-input type="text" label="celular" label-placement="floating" fill="outline" #celular
-        placeholder="(xx) xxxxx-xxxx" [maskito]="phoneMask" [maskitoElement]="maskPredicate"></ion-input>
+        <ion-input type="text" label="celular" label-placement="floating" fill="outline" #celular
+          placeholder="(xx) xxxxx-xxxx" [maskito]="phoneMask" [maskitoElement]="maskPredicate"></ion-input>
 
-      <ion-input type="text" label="profissão" label-placement="floating" fill="outline"
-        placeholder="Entre com sua profissão" #profissao></ion-input>
-      <ion-input type="password" label="Senha" label-placement="floating" fill="outline" placeholder="Entre sua senha"
-        #senhaC></ion-input>
-      <ion-input type="password" label="Confirme a Senha" label-placement="floating" fill="outline"
-        placeholder="Confirme sua senha" #senhaConf></ion-input>
-      <p class="erro">{{mensagem}}</p>
-      <ion-input type="file" label="foto" label-placement="floating" fill="outline" #foto
-        (change)="GuardarFoto($event)"></ion-input>
-      <ion-button expand="block"
-        (click)="Cadastrar(nome.value,email.value,CPF.value,celular.value,profissao.value,senhaC.value,senhaConf.value)">Cadastrar</ion-button>
-    </ion-card-content>
-  </ion-card>
+        <ion-input type="text" label="profissão" label-placement="floating" fill="outline"
+          placeholder="Entre com sua profissão" #profissao></ion-input>
+        <ion-input type="password" label="Senha" label-placement="floating" fill="outline" placeholder="Entre sua senha"
+          #senhaC></ion-input>
+        <ion-input type="password" label="Confirme a Senha" label-placement="floating" fill="outline"
+          placeholder="Confirme sua senha" #senhaConf></ion-input>
+        <p class="erro">{{mensagem}}</p>
+        <ion-input type="file" label="foto" label-placement="floating" fill="outline" #foto
+          (change)="GuardarFoto($event)"></ion-input>
+        <ion-button expand="block"
+          (click)="Cadastrar(nome.value,email.value,CPF.value,celular.value,profissao.value,senhaC.value,senhaConf.value)">Cadastrar</ion-button>
+      </ion-card-content>
+    </ion-card>
+  </ion-content>
   <ion-router-outlet *ngIf="mostrarApp"></ion-router-outlet>
 </ion-app>
